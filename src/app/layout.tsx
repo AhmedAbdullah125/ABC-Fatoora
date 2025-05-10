@@ -14,7 +14,7 @@ import { getSeoData } from '@/lib/getSeoData';
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Ahmed Elsayed",
-    description: "Ahmed Abdullaj",
+    description: "Ahmed Abdullah",
     keywords: "SCADA, SIRI ASSESSMENT",
    
   };
