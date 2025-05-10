@@ -1,0 +1,166 @@
+.solution-page-cont {
+    .sol-header {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        .overlay {
+            width: 100%;
+            height: 100%;
+            background: rgb(34, 50, 110);
+            background: linear-gradient(180deg, rgba(34, 50, 110, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%);
+            overflow: hidden;
+            .abs-img {
+                position: absolute;
+                /* bottom: -50%; */
+                height: 550px;
+                right: 0px;
+                width: 550px;
+                @media screen and (max-width: 767px) {
+                    width: 350px;
+                    height: 350px;
+                    
+                }
+            }
+
+            .container {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                padding: 20px 0;
+
+            }
+            .items-end{
+                align-items: flex-end;
+            }
+
+            .text {
+                width: 100%;
+                // max-width: 400px;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                h2{
+                    font-size: 32px;
+                    font-weight: 700;
+                    color: $white;
+                    margin-bottom: 0px;
+                }
+                p{
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: $white;
+                    margin-bottom: 0;
+                    text-align: justify;
+                }
+            }
+        }
+    }
+    .key-compo-cont{
+        padding: 40px 0 64px;
+        h3{
+            font-size: 32px;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        
+        .swiper{
+            padding: 20px 20px;
+            margin: 0 -20px;
+        }
+        .swiper-slide{
+            height: auto;
+        }
+        .content-card{
+            padding: 24px 16px;
+            border-radius: 16px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: $white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 16px;
+            &:hover{
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease-in-out;
+                background-color: #f2f2f2;
+            }
+            h4{
+                font-size: 24px;
+                font-weight: 700;
+                color: #00263E;
+                text-align: center;
+            }
+            h5{
+                font-size: 15px;
+                font-weight: 400;
+                color: #00263E;
+                text-align: center;
+
+            }
+            .img-cont{
+                width: 128px;
+                height: 128px;
+                overflow: hidden;
+                aspect-ratio: 1/1;
+                margin: 0 auto;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+            .img-cont-roi{
+                width: 64px;
+                height: 64px;
+                overflow: hidden;
+                aspect-ratio: 1/1;
+                margin: 0 auto;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+        .para-cont{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
+            h3{
+                text-align: start;
+            }
+            p{
+                font-size: 15px;
+                font-weight: 400;
+                color: #00263E;
+            }
+        }
+
+    }
+    .ROI-compo-cont{
+        padding: 0 0 100px;
+
+    }
+}
+
+.sol-head-p{
+    padding: 24px 0;
+    h3{
+        font-size: 26px;
+        font-weight: 700;
+        color: $hover;
+        margin-bottom: 12px;
+    }
+    p{
+        font-size: 18px;
+        font-weight: 600;
+        color: $hover;
+        margin-bottom: 0;
+    }
+}

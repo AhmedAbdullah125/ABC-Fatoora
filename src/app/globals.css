@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Cairo', sans-serif;
+  overflow-y: scroll;
+}
+html body[data-scroll-locked] {
+  /* --removed-body-scroll-bar-size: 0 !important; */
+  margin-right: 0 !important;
+}
+/* @media (prefers-color-scheme: dark) {
+  :root {
+  }
+} */
+/* * {
+  transition: all 0.3s ease;
+} */
+.side-menu {
+  transition: all 0.3s ease;
+}
+.bg-white{
+  background-color: #FFF;
+}
+.activeLink {
+  color: #2977b7;
+  border-bottom: 2px dashed #2977b7;
+}
+body {
+  font-family: 'Cairo';
+  box-sizing: border-box;
+  font-style: normal;
+  font-weight: 400;
+  background-color: var(--white-color);
+  overflow-x: hidden;
+}
+a {
+  text-decoration: none !important;
+}
+
+/*style scroll bar*/
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2977b7;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #42a8c3;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #42a8c3;
+}
+
+.mySwiper {
+  padding-top: 20px !important;
+  padding-bottom: 30px !important;
+}
+.swiper-pagination {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-pagination-bullet {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(119, 118, 118);
+  background-color: transparent;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.swiper-pagination-bullet-active {
+  color: #2977b7;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: rgb(119, 118, 118);
+  font-family: 'DM Serif Display', serif !important;
+  cursor: pointer;
+}
+.customInput {
+  @apply shadow-none border-2 px-3 py-10 text-xl placeholder:text-slate-400 outline-primaryColor ring-offset-0 focus:border-none ring-0 !important;
+}
+.popoverW {
+  width: var(--radix-popover-trigger-width);
+  max-height: var(--radix-popover-content-available-height);
+}
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.start-0 {
+  inset-inline-start: 0 !important;
+}
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+.profileActiveLink{
+  opacity: 1;
+  background-color: #FFEFE5;
+}
+.edit .PhoneInputCountry{
+  display: flex;
+  align-items: center;
+  border: 2px solid #2977b7;
+  overflow:hidden;
+  border-radius: 12px;
+  height: 100%;
+  flex-shrink: 0;
+  padding:0 5px;
+}
+.save .PhoneInputCountry{
+  display: flex;
+  align-items: center;
+  border: 2px solid #CACED8;
+  overflow:hidden;
+  border-radius: 12px;
+  height: 100%;
+  flex-shrink: 0;
+  padding:0 5px;
+}
+.save .PhoneInputInput{
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid #CACED8;
+  border-radius: 12px;
+  border-radius: 12px;
+  overflow:hidden;
+  padding: 0 15px;
+}
+.edit .PhoneInputInput{
+  width: 100%;
+  background-color: #fff7f7;
+  border: 2px solid #2977b7;
+  border-radius: 12px;
+  border-radius: 12px;
+  overflow:hidden;
+  padding:0 15px;
+}
+.save  .PhoneInputCountryIcon{
+  width:35px;
+  flex-shrink: 0;
+
+}
+.edit .PhoneInputCountrySelect{
+  width: 70px;
+  background-color: #fff7f7;
+  height: 100%;
+}
+.save .PhoneInputCountrySelect{
+  width: 70px;
+  background-color: #fff;
+  height: 100%;
+}
+.ltr{
+  direction:ltr;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

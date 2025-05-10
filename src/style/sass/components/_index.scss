@@ -1,0 +1,218 @@
+.why-masira {
+    padding: 56px 0;
+    background-color: #F6F7F6;
+
+    h2 {
+        font-size: 32px;
+        font-weight: 700;
+        color: $hover;
+        margin-bottom: 11px;
+        text-align: center;
+
+        @media screen and (max-width: 767px) {
+            font-size: 24px;
+
+        }
+    }
+
+    h3 {
+        font-size: 24px;
+        font-weight: 600;
+        color: #3C7B9C;
+        text-align: center;
+        margin-bottom: 34px;
+
+        @media screen and (max-width: 767px) {
+            font-size: 20px;
+            margin-bottom: 24px;
+
+        }
+    }
+
+    .grid-cont {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 24px;
+
+        @media screen and (max-width: 991px) {
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media screen and (max-width: 767px) {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 16px;
+
+            @media screen and (max-width: 767px) {
+                width: 60px;
+                height: 60px;
+
+            }
+        }
+
+        h4 {
+            font-size: 24px;
+            font-weight: 700;
+            color: $hover;
+            margin-bottom: 8px;
+            text-align: center;
+
+            @media screen and (max-width: 767px) {
+                font-size: 20px;
+
+            }
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #3A3A43;
+            text-align: center;
+
+            @media screen and (max-width: 767px) {
+                font-size: 14px;
+
+            }
+        }
+    }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: $white !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: $hover;
+    flex-shrink: 0;
+    bottom: -0px !important;
+    top: auto !important;
+
+
+    &::after {
+        font-size: 18px !important;
+    }
+
+    &:hover {
+        background-color: $main;
+    }
+}
+
+.swiper-button-next {
+    inset-inline-end: calc(50% - 52px) !important;
+    inset-inline-start: auto !important;
+}
+
+.swiper-button-prev {
+    inset-inline-start: calc(50% - 52px) !important;
+    inset-inline-end: auto !important;
+}
+
+.swiper {
+    padding-bottom: 60px !important;
+}
+
+.ncti {
+    padding: 56px 0;
+    position: relative;
+
+    .ncti-cont {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        @media screen and (max-width: 767px) {
+            gap: 8px;
+
+        }
+    }
+
+    .abs {
+        position: absolute;
+        top: 50%;
+        inset-inline-start: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        img {
+            height: 41px;
+            width: auto;
+            margin-bottom: 5px;
+
+            @media screen and (max-width: 767px) {
+                height: 30px;
+
+            }
+        }
+
+        h3 {
+            color: $hover;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #222;
+            margin-bottom: 32px;
+            text-align: justify;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            background-color: $hover;
+            gap: 10px;
+            color: $white;
+            border-radius: 8px;
+            font-size: 16;
+            font-weight: 600;
+            height: 48px;
+            padding: 0 16px;
+
+            &:hover {
+                background-color: $main;
+                color: $hover;
+            }
+
+
+            i {
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+.ncit-ar{
+    .abs {
+        transform: translate(50%, -50%);
+    }
+}

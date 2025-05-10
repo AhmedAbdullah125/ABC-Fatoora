@@ -1,0 +1,200 @@
+.countries-section {
+    padding: 56px 0 32px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    // background-color: #F6F7F6;
+    h3 {
+        color: #185A7D;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    h4 {
+        color: #2B9FD8;
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 25px;
+        text-align: center;
+
+    }
+
+    @media screen and (max-width: 767px) {
+        padding: 56px 0;
+    }
+
+    .marq {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        .part-cont {
+            width: 160px;
+            height: 160px;
+            overflow: hidden;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(158, 218, 255, 0.3);
+
+            @media screen and (max-width: 600px) {
+                width: 180px;
+                height: 180px;
+            }
+            &:hover {
+                background-color: rgba(158, 218, 255, 0.6);
+                img{
+                    transform: scale(1.1);
+                }
+            }
+            img {
+                width: 80%;
+                height: auto;
+                max-height: 80%;
+            }
+        }
+    }
+}
+
+.ready-cont {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+    .svit{
+        height: 370px;
+        position: absolute;
+        top: 0%;
+        left: -10%;
+        z-index: 3;
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .svit-r{
+        right: -10%;
+        left: unset;
+        transform: rotate(180deg);
+    }
+
+    .ready {
+        padding: 56px 0px;
+        background-color: rgba(100, 138, 162, .95);
+        .container {
+            display: flex;
+            // align-items: center;
+            flex-direction: column;
+        }
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: $white;
+            margin-bottom: 16px;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            color: $white;
+            margin-bottom: 24px;
+        }
+
+        a {
+            color: $sec;
+            border-radius: 5px;
+            background-color: $white;
+            width: fit-content;
+            position: relative;
+            z-index: 5;
+        }
+        a:hover {
+            background-color: $main;
+            color: $white;
+        }
+    }
+}
+.main-touch{
+    .ready-cont{
+        .ready{
+            background-color: rgba(0, 38, 62, .95);
+            .container{
+                align-items: center;
+            }
+        }
+    }
+}
+
+.main-link-sec {
+    height: 56px;
+    border-radius: 11px;
+    background-color: $sec;
+    padding: 0 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: fit-content;
+    color: $white;
+    flex-shrink: 0;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-wrap: nowrap;
+    &:hover {
+        background-color: $main;
+    }
+}
+
+.messVis{
+    .miss-vis-cont{
+        display: flex;
+        gap: 100px;
+        width: 100%;
+        border-radius: 8px;
+        background-color: #E1ECF1;
+        @media screen and (max-width: 767px) {
+            flex-direction: column;
+        }
+        .part-cont{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+            padding: 24px 0;
+            img{
+                width: 100px;
+                height: 100px;
+                object-fit: contain;
+                @media screen and (max-width: 767px) {
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+            h3{
+                font-size: 24px;
+                font-weight: 700;
+                color: $sec;
+                @media screen and (max-width: 767px) {
+                    font-size: 16px;
+                }
+            }
+            p{
+                font-size: 16px;
+                font-weight: 400;
+                color: #3A3A43;
+                text-align: center;
+                @media screen and (max-width: 767px) {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

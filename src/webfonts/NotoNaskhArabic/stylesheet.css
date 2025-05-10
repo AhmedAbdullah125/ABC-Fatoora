@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'NotoNaskhArabic';
+    src: url('NotoNaskhArabic-Bold.woff2') format('woff2'),
+        url('NotoNaskhArabic-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NotoNaskhArabic';
+    src: url('NotoNaskhArabic-SemiBold.woff2') format('woff2'),
+        url('NotoNaskhArabic-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NotoNaskhArabic';
+    src: url('NotoNaskhArabic-Medium.woff2') format('woff2'),
+        url('NotoNaskhArabic-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NotoNaskhArabic';
+    src: url('NotoNaskhArabic-Regular.woff2') format('woff2'),
+        url('NotoNaskhArabic-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NotoNaskhArabic';
+    src: url('NotoNaskhArabic-Regular.woff2') format('woff2'),
+        url('NotoNaskhArabic-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

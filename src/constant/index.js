@@ -1,0 +1,1 @@
+export const Cities= [{name: 'mansoura', price:10}, {name: 'mansoura', price:10}, {name: 'mansoura', price:10}, {name: 'mansoura', price:10}]

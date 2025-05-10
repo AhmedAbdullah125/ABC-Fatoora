@@ -1,0 +1,148 @@
+body {
+    overflow-x: hidden;
+}
+
+header {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.15);
+    @media print {
+        display: none;
+    }
+
+    .container {
+        position: relative;
+    }
+
+    .logo-img {
+        width: 86px;
+        height: auto;
+    }
+
+    .lang-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // border: 2px solid $sec;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .links {
+        // min-width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 35px;
+
+        a {
+            color: #7C7C7C;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 29.98px;
+        }
+        .active {
+            color: #181818;
+        }
+        a:hover {
+            color: $sec;
+        }
+
+        .book-link {
+            padding-left: 32px;
+            padding-right: 32px;
+            background-color: $sec;
+            border-radius: 8px;
+            height: 55px;
+            line-height: 55px;
+            color: $white;
+        }
+
+        .book-link:hover {
+            background-color: $main;
+            color: $white;
+        }
+    }
+
+    .menu-bars {
+        display: none;
+        cursor: pointer;
+
+        a {
+            width: 100%;
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .side-menu {
+        position: absolute;
+        top: 100%;
+        inset-inline-end: 15px;
+        flex-direction: column;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: $white;
+        box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.15);
+        z-index: 10;
+        min-width: 300px;
+        align-items: center;
+        display: flex;
+        opacity: 0;
+        visibility: hidden;
+
+        .links {
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            align-items: center;
+
+            a {
+                width: 100%;
+                text-align: center;
+                border-radius: 8px;
+            }
+
+            a:hover {
+                background-color: $main;
+                color: $white;
+            }
+
+            .book-link:hover {
+                background-color: $main;
+            }
+
+        }
+    }
+
+    .side-menu-active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@media (max-width: 676px) {
+    header {
+        .links {
+            display: none;
+        }
+
+        .side-menu {
+            .links {
+                display: flex;
+            }
+        }
+
+        .menu-bars {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+    }
+}

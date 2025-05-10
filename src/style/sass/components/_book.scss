@@ -1,0 +1,389 @@
+body {
+    position: relative;
+}
+
+.popup {
+    // position: absolute;
+    // top: 0%;
+    // left: 0%;
+    // bottom: 0%;
+    // right: 0%;
+    // z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    min-height: calc(100vh - 192px);
+
+    .popup-cont {
+        padding: 35px 40px;
+        border-radius: 20px;
+        background-color: $white;
+        display: flex;
+        // margin-bottom: 350px;
+        flex-direction: column;
+        align-items: center;
+        max-width: 800px;
+
+        img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: $black;
+            margin-bottom: 20px;
+        }
+
+        p {
+            width: 100%;
+            background-color: #E0FEE0;
+            color: $black;
+            font-size: 32px;
+            font-weight: 600;
+            padding: 20px 40px;
+        }
+    }
+}
+
+.book-main-page {
+
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 36px 0;
+        min-height: 100vh;
+    }
+
+    .book-cont {
+        display: flex;
+        gap: 100px;
+        padding-top: 43px;
+        padding-bottom: 43px;
+        align-items: center;
+
+        .MazarInfo {
+            z-index: 2;
+
+            @media screen and (max-width: 991px) {
+                display: none;
+            }
+
+            img {
+                width: 80%;
+                height: auto;
+            }
+
+            h2 {
+                color: $white;
+                font-size: 48px;
+                font-weight: 700;
+                margin-bottom: 16px;
+            }
+
+            p {
+                font-size: 24px;
+                font-weight: 700;
+                color: #C3C3C3;
+                margin-bottom: 40px;
+            }
+        }
+
+        .form {
+            background-color: $white;
+            z-index: 2;
+            border-radius: 15px;
+            padding: 24px;
+
+            form {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                align-items: flex-start;
+                width: 100%;
+                column-gap: 24px;
+
+                @media screen and (max-width: 767px) {
+                    grid-template-columns: 1fr;
+                }
+
+                .phoneInput-cont {
+                    margin-top: 0 !important;
+                }
+
+                div {
+                    width: 100%;
+                }
+
+                .text-area-cont {
+                    grid-column: span 2;
+
+                    @media screen and (max-width: 767px) {
+                        grid-column: span 1;
+                    }
+                }
+
+                .captcha {
+                    padding-top: 8px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: center;
+                    justify-content: center;
+                    padding-bottom: 40px;
+
+                    div {
+                        width: auto;
+                    }
+
+                    .captcha-text {
+                        color: #ef4444;
+                        font-weight: 500;
+                        font-size: .8rem;
+                    }
+                }
+            }
+
+            label {
+                font-size: 15px;
+                font-weight: 700;
+                color: #0A0A0A;
+                width: 100%;
+            }
+
+            input,
+            textarea {
+                margin-top: 12px;
+                margin-bottom: 16px;
+                box-shadow: none;
+                padding: 15px 24px;
+                height: 55px;
+                width: 100%;
+                border: 1px solid $main;
+                background-color: #F9F9F9;
+                border-radius: 8px;
+                //to take full width of grid
+
+            }
+
+            textarea {
+                height: 150px;
+            }
+
+            .date-picker {
+                border: 1px solid #FFC599;
+                border-radius: 8px;
+                padding: 8px 24px;
+                font-size: 13px;
+                font-weight: 400;
+                margin-top: 12px;
+                margin-bottom: 16px;
+                background-color: #F9F9F9;
+                height: 55px;
+
+            }
+
+            .form-message {
+                margin-bottom: 18px;
+            }
+
+            .submit {
+                padding: 15px 24px;
+                border-radius: 5px;
+                background-color: $sec;
+                color: $white;
+            }
+
+            .submit:hover {
+                background-color: $main;
+            }
+
+            .date-btn {
+                text-align: start;
+                color: #0A0A0A;
+                font-size: 13px;
+                font-weight: 400;
+                background-color: #F9F9F9;
+            }
+        }
+    }
+
+    .user-cont {
+        align-items: flex-start;
+        padding: 100px 0;
+    }
+
+    .user {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        align-items: center;
+        width: 100%;
+
+        h2 {
+            text-align: center;
+            color: $white;
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        .users {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            align-items: flex-start;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .user-item {
+            background-color: #E0F5F5;
+            // width: 100%;
+            border-radius: 14px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 11px;
+
+            h3 {
+                font-size: 24px;
+                font-weight: 700;
+                color: #444444;
+            }
+
+            img {
+                width: 64px;
+            }
+        }
+
+        .user-item:hover {
+            background-color: $hover;
+
+            h3 {
+                color: $white;
+            }
+        }
+    }
+}
+
+
+.PhoneInput {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 10px;
+
+    .PhoneInputCountry {
+        display: flex;
+        height: 55px;
+        width: 105px;
+        border-radius: 8px;
+        border: 1px solid $main;
+        background-color: #F9F9F9;
+        overflow: hidden;
+        // width: 100px;
+        margin-top: 12px;
+        margin-bottom: 16px;
+        max-width: 110px;
+    }
+
+    .PhoneInputCountrySelect {
+        width: 100%;
+
+        @media screen and (max-width: 767px) {
+            font-size: 12px;
+        }
+
+        // display: none;
+    }
+
+    .PhoneInputCountryIcon {
+        max-height: 100%;
+        height: 55px;
+        padding: 3px;
+        max-width: 50px;
+        display: none;
+
+        input:focus-visible {
+            border: none;
+            outline: none;
+        }
+
+        img {
+            height: 100%;
+            border-radius: 5px;
+        }
+
+    }
+
+    .PhoneInputCountrySelectArrow {
+        display: none;
+    }
+}
+
+.ltr {
+    .PhoneInput {
+        display: flex;
+        flex-direction: row;
+    }
+}
+.book-main-page .book-cont .form form .PhoneInputCountry {
+    width: 106px;
+    flex-shrink: 0;
+
+    @media screen and (max-width: 767px) {
+        width: 80px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .book-main-page .user .users {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .book-main-page .book-cont .form {
+        padding: 24px 12px;
+    }
+
+    .book-main-page .user .users {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .book-main-page {
+        position: relative;
+
+        .popup {
+            .popup-cont {
+                margin-bottom: 150px;
+
+                p {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .book-cont {
+            flex-direction: column;
+        }
+    }
+}
+
+.h2-form-contact {
+    color: $white;
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 48px;
+    text-align: center;
+}
+
+.p-form-contact {
+    color: $white;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 24px;
+    text-align: center;
+}

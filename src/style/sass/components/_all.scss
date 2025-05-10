@@ -1,0 +1,232 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// 
+
+
+.n-header {
+    margin: 23px 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+        height: 36px;
+        width: auto;
+    }
+
+    h2 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #1A1C21;
+    }
+}
+
+.container {
+    margin: auto;
+}
+
+.letter-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14px;
+
+    .part {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+
+        h3 {
+            font-size: 10px;
+            font-weight: 600;
+            color: #1A1C21;
+            margin-bottom: 4px;
+            font-family: 'Inter', sans-serif;
+
+        }
+
+        h4 {
+            color: #5E6470;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        span {
+            color: #5E6470;
+            font-size: 10px;
+            font-weight: 400;
+        }
+    }
+}
+
+.due {
+    margin-bottom: 22px;
+
+    span {
+        font-size: 10px;
+        font-weight: 700;
+        color: #5E6470;
+        margin-bottom: 4px;
+    }
+
+    .due-amount {
+        padding: 6px 15px;
+        background-color: #ECE6F3;
+
+        p {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: $main;
+        }
+
+    }
+}
+
+.table-container {
+    overflow: auto;
+    border-bottom: 1px solid #D7DAE0;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+
+    .table {
+        width: 100%;
+        border-collapse: separate;
+        background-color: transparent;
+    }
+
+    .table thead th {
+        text-align: left;
+        font-weight: 700;
+        border-bottom: 1px solid #ddd;
+        color: #7e8087;
+        font-size: 10px;
+        padding-bottom: 8px;
+    }
+
+    .table tbody tr {
+        background-color: #fff;
+        // border-radius: 10px;
+        // box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .table tbody td {
+        padding-top: 12px;
+        vertical-align: middle;
+        font-size: 10px;
+        font-weight: 700;
+        color: #5E6470;
+        border-top: none;
+
+    }
+
+    .table tbody td p {
+        color: #1A1C21;
+        font-size: 10px;
+        font-weight: 700;
+        margin-bottom: 2px;
+
+    }
+
+    .table tbody td a {
+        display: block;
+        font-size: 10px;
+        color: #5E6470;
+        text-decoration: none;
+        margin-top: 4px;
+        font-weight: 400;
+
+    }
+
+    .table tbody td a:hover {
+        text-decoration: underline !important;
+    }
+}
+
+.total {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+
+    .total-cont {
+        min-width: 50%;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        .band {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                font-size: 10px;
+                font-weight: 700;
+                color: #1A1C21;
+            }
+
+            .discount {
+                color: #C1092F;
+            }
+        }
+
+        .last-band {
+            padding-bottom: 12px;
+            border-bottom: 1px solid #D7DAE0;
+
+        }
+    }
+}
+
+body {
+    // position: relative;
+    min-height: 100vh;
+}
+
+.f-footer {
+
+    padding: 14px 0;
+    border-top: 1px solid #D7DAE0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    p {
+
+        color: #000;
+        font-size: 10px;
+        font-weight: 400;
+    }
+
+    span {
+        color: #000;
+        font-size: 10px;
+        font-weight: 700;
+    }
+
+    @media print {
+        position: fixed;
+        bottom: 0px;
+        right: 0;
+        width: 100%;
+
+    }
+}
+.btn-print{
+    @media print {
+        display: none;
+    }
+}
+@page {
+    @bottom-center {
+        content: "Page " counter(page) " of " counter(pages);
+        font-size: 10px;
+        color: #000;
+    }
+}
