@@ -196,39 +196,39 @@ export default function FormPage() {
                                 <form onSubmit={form.handleSubmit(Submit)}>
                                     <FormField name="name" control={form.control} render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{lang === 'en' ? 'Full Name' : 'الاسم الكامل'}</FormLabel>
-                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Full Name' : 'الاسم الكامل'} /></FormControl>
+                                            <FormLabel>{lang === 'en' ? 'Vollständiger Name' : 'الاسم الكامل'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Vollständiger Name' : 'الاسم الكامل'} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
                                     <FormField name="company" control={form.control} render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{lang === 'en' ? 'Company Name' : 'اسم الشركة'}</FormLabel>
-                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Company Name' : 'اسم الشركة'} /></FormControl>
+                                            <FormLabel>{lang === 'en' ? 'Name der Firma' : 'اسم الشركة'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Name der Firma' : 'اسم الشركة'} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
 
                                     <FormField name="address" control={form.control} render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{lang === 'en' ? 'Address' : 'العنوان'}</FormLabel>
-                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Address' : 'العنوان'} /></FormControl>
+                                            <FormLabel>{lang === 'en' ? 'Adresse' : 'العنوان'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Adresse' : 'العنوان'} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
 
                                     <FormField name="phone" control={form.control} render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{lang === 'en' ? 'Phone' : 'رقم الهاتف'}</FormLabel>
-                                            <FormControl><PhoneInput {...field} placeholder={lang === 'en' ? 'Phone' : 'رقم الهاتف'} /></FormControl>
+                                            <FormLabel>{lang === 'en' ? 'Telefon' : 'رقم الهاتف'}</FormLabel>
+                                            <FormControl><PhoneInput {...field} placeholder={lang === 'en' ? 'Telefon' : 'رقم الهاتف'} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
 
                                     <FormField name="email" control={form.control} render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{lang === 'en' ? 'Email' : 'البريد الالكتروني'}</FormLabel>
-                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Email' : 'البريد الالكتروني'} /></FormControl>
+                                            <FormLabel>{lang === 'en' ? 'E-Mail' : 'البريد الالكتروني'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'E-Mail' : 'البريد الالكتروني'} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
