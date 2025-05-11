@@ -8,11 +8,6 @@ import validator from "validator";
 import { Button } from '@/components/ui/button';
 import PhoneInput from 'react-phone-number-input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, } from '@/components/ui/form';
-import { motion } from 'framer-motion';
-import { Textarea } from '../ui/textarea';
-import { toast } from "sonner"
-import Image from 'next/image';
-import logo from '/public/ABC.webp'
 
 export default function FormPage() {
     const [lang, setLang] = useState('en');
@@ -37,6 +32,9 @@ export default function FormPage() {
         paid: z.string().min(1, { message: "Paid is required" }),
         Buchung : z.string().min(1, { message: "Buchung is required" }),
         Steuerjahr : z.string().min(1, { message: "Steuerjahr is required" }),
+        title: z.string().min(1, { message: "Title is required" }),
+        title2 : z.string().min(1, { message: "Title is required" }),
+        title3 : z.string().max(200, { message: "Title must be at most 200 characters" }),
     });
 
     const form = useForm({
@@ -52,6 +50,9 @@ export default function FormPage() {
             paid: '',
             Buchung: '',
             Steuerjahr: '',
+            title: '',
+            title2: '',
+            title3: '',
         }
     });
 
@@ -102,11 +103,11 @@ export default function FormPage() {
                     </div>
                     <div className="description">
                         <p>
-                            <span>Gebucht: Apartment - Erdgeschoss ( Family - Friendly rental flat)</span>
+                            <span>{data.title}</span>
 
-                            <span>Check in 08.05.2025 Check Out 09.05.2025</span>
+                            <span>{data.title2}</span>
 
-                            <span> 1 Person</span>
+                            <span>{data.title3}</span>
                         </p>
                     </div>
                     <div className="due">
@@ -239,6 +240,28 @@ export default function FormPage() {
                                             <FormMessage />
                                         </FormItem>
                                     )} />
+                                    <FormField name="title" control={form.control} render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{lang === 'en' ? 'Primäre Rechnungsadresse' : 'العنوان الرئيسي'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Primäre Rechnungsadresse' : 'العنوان الرئيسي'} /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} />
+                                    <FormField name="title2" control={form.control} render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{lang === 'en' ? 'Sekundäre Rechnungsadresse' : 'العنوان الثانوي'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Sekundäre Rechnungsadresse' : 'العنوان الثانوي'} /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} />
+                                    <FormField name="title3" control={form.control} render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{lang === 'en' ? 'Unterrechnungsadresse' : 'العنوان الفرعي'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Unterrechnungsadresse' : 'العنوان الفرعي'} /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} />
+
 
                                     <FormField name="total" control={form.control} render={({ field }) => (
                                         <FormItem>
