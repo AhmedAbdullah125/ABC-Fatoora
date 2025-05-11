@@ -27,7 +27,10 @@ export default function Header() {
   return (
     <header className={` header`} style={{ direction: lang === 'ar' ? 'rtl' : 'ltr' }} >
       <div className="container m-auto flex items-center gap-2 justify-between">
-        <Link href="/"> <Image src={logo} alt="logo" className="logo-img" /></Link>
+        <Link href="/"> 
+        {/* <Image src={logo} alt="logo" className="logo-img" /> */}
+        <h1 className="logo">Ahmed Elsayed</h1>
+        </Link>
         <div className="links">
           
           <div

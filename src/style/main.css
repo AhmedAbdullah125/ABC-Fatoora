@@ -500,6 +500,12 @@ header {
 header .container {
   position: relative;
 }
+header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #181818;
+}
 header .logo-img {
   width: 86px;
   height: auto;
