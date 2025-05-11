@@ -2929,6 +2929,17 @@ body {
   color: #1A1C21;
 }
 
+.description p {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.description p span {
+  font-size: 12px;
+  font-weight: 400;
+  color: #5E6470;
+}
+
 .container {
   margin: auto;
 }

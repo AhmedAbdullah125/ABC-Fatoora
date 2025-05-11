@@ -34,7 +34,9 @@ export default function FormPage() {
         // comments: z.string().max(500, { message: "Comments must be at most 500 characters" }),
         address: z.string().max(500, { message: "Address must be at most 500 characters" }).min(1, { message: "Address is required" }),
         total: z.string().min(1, { message: "Total is required" }),
-        paid: z.string().min(1, { message: "Paid is required" })
+        paid: z.string().min(1, { message: "Paid is required" }),
+        // Buchung : z.string().min(1, { message: "Buchung is required" }),
+        Steuerjahr : z.string().min(1, { message: "Steuerjahr is required" }),
     });
 
     const form = useForm({
@@ -47,7 +49,9 @@ export default function FormPage() {
             company: '',
             address: '',
             total: '',
-            paid: ''
+            paid: '',
+            // Buchung: '',
+            Steuerjahr: '',
         }
     });
 
@@ -62,42 +66,51 @@ export default function FormPage() {
                 <div className="container">
                     <div className="n-header">
                         <Image src={logo} alt="logo" width={100} height={100} className="logo" />
-                        <h2>INVOICE</h2>
+                        <h2>Rechnung</h2>
                     </div>
 
                     <div className="letter-details">
                         <div className="part">
-                            <h3>From</h3>
-                            <h4 className="sender-name">ABC Company</h4>
-                            <span className="sender-address">Munchen, Germany</span>
-                            <span className="sender-phone">+49 1520 4830172</span>
-                            <span className="sender-mail">ahmedabdullahelsayed@gmail.com</span>
-                            <span className="sender-taxid">TAX ID : 00XXXXX1234X0XX</span>
+                            <h3>Von</h3>
+                            <h4 className="sender-name">Ahmed Elsayed</h4>
+                            <span className="sender-address">Hafenstraße 2, 25436 Uetersen</span>
+                            <span className="sender-phone">+49 1550 61785042</span>
+                            <span className="sender-mail">ahmed.abdullah.eg8791@gmail.com</span>
+                            <span className="sender-taxid">Steuer ID Nr : 98 206 153 544</span>
+                            <span className="sender-taxid">ust : 13/105/01007</span>
                         </div>
                         <div className="part">
-                            <h3>Billed to</h3>
+                            <h3>Zum</h3>
                             <h4 className="receiver-name">{data.name}</h4>
-                            <span className="receiver-address">{data.address}</span>
                             <span className="receiver-company">{data.company}</span>
+                            <span className="receiver-address">{data.address}</span>
                             <span className="receiver-phone">{data.phone}</span>
                             <span className="receiver-email">{data.email}</span>
                         </div>
                         <div className="part">
                             <div className="semi-part">
-                                <h3>Invoice No.</h3>
-                                <span className="invoice-no">#656764-32</span>
+                                <h3>Buchung Nummer</h3>
+                                <span className="invoice-no">#4211467282</span>
                             </div>
                             <div className="semi-part">
-                                <h3>Invoice Date</h3>
+                                <h3>Rechnungsdatum</h3>
                                 <span className="invoice-date">{new Date().toDateString()}</span>
                             </div>
                         </div>
                     </div>
+                    <div className="description">
+                        <p>
+                            <span>Gebucht: Apartment - Erdgeschoss ( Family - Friendly rental flat)</span>
 
+                            <span>Check in 08.05.2025 Check Out 09.05.2025</span>
+
+                            <span> 1 Person</span>
+                        </p>
+                    </div>
                     <div className="due">
-                        <span>Amount due</span>
+                        <span>Kommissionsfähiger Betrag:</span>
                         <div className="due-amount">
-                            <p>{Number(data.total).toFixed(2)} Eur</p>
+                            <p>{Number(data.total).toFixed(2)} Euro</p>
                         </div>
                     </div>
                     {/* 
@@ -118,8 +131,8 @@ export default function FormPage() {
                                     <a href="/Item Details">Item Details</a>
                                 </td>
                                 <td>1</td>
-                                <td>18.000 Eur</td>
-                                <td>18.000 Eur</td>
+                                <td>18.000 Euro</td>
+                                <td>18.000 Euro</td>
                             </tr>
                             <tr>
                                 <td>
@@ -127,8 +140,8 @@ export default function FormPage() {
                                     <a href="/Item Details">Item Details</a>
                                 </td>
                                 <td>1</td>
-                                <td>18.000 Eur</td>
-                                <td>18.000 Eur</td>
+                                <td>18.000 Euro</td>
+                                <td>18.000 Euro</td>
                             </tr>
                         </tbody>
                     </table>
@@ -137,24 +150,24 @@ export default function FormPage() {
                     <div className="total">
                         <div className="total-cont">
                             <div className="band">
-                                <span>Subtotal</span>
-                                <span>{Number(data.total).toFixed(2)} Eur</span>
+                                <span>Kommissionsfähiger Betrag</span>
+                                <span>{Number(data.total).toFixed(2)} Euro</span>
                             </div>
                             <div className="band">
-                                <span>Paid</span>
-                                <span>{Number(data.paid).toFixed(2)} Eur</span>
-                            </div>
-                            <div className="band">
-                                <span>Total VAT</span>
-                                <span>2.000 Eur</span>
+                                <span>Der bei der Buchung einer Unterkunft gezahlte Betrag</span>
+                                <span>{Number(data.paid).toFixed(2)} Euro</span>
                             </div>
                             <div className="band last-band">
-                                <span>Discount</span>
-                                <span className="discount">-2.000 Eur</span>
+                                <span>Steuerjahr, Kleinerunternehmen</span>
+                                <span>{Number(data.Steuerjahr).toFixed(2)} Euro</span>
                             </div>
+                            {/* <div className="band ">
+                                <span>Discount</span>
+                                <span className="discount">-2.000 Euro</span>
+                            </div> */}
                             <div className="band">
-                                <span>Rest Amount</span>
-                                <span>{(Number(data.total) - Number(data.paid)).toFixed(2)} Eur</span>
+                                <span>Der bei der Buchung einer Unterkunft gezahlte Betrag</span>
+                                <span>{(Number(data.total) - Number(data.paid)).toFixed(2)} Euro</span>
 
                             </div>
                             <Button className="btn-print text-xl py-4 rounded-xl min-w-32 h-13 submit "
@@ -168,7 +181,7 @@ export default function FormPage() {
 
                     <div className="f-footer">
                         <div className="container">
-                            <span>#656764-32 . {Number(data.total).toFixed(2)}Eur due {new Date().toDateString()}</span>
+                            <span>#656764-32 . {Number(data.total).toFixed(2)}Euro due {new Date().toDateString()}</span>
                         </div>
                     </div>
                 </div>
@@ -220,16 +233,30 @@ export default function FormPage() {
 
                                     <FormField name="total" control={form.control} render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel> {lang === "en" ? "Total Amount" : "المبلغ الكلي"}</FormLabel>
-                                            <FormControl><Input {...field} placeholder={lang === "en" ? "Total Amount" : "المبلغ الكلي"} type="number" /></FormControl>
+                                            <FormLabel> {lang === "en" ? "Kommissionsfähiger Betrag:" : "مبلغ العمولة: "}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === "en" ? "Kommissionsfähiger Betrag" : "مبلغ العمولة:"} type="number" /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
 
                                     <FormField name="paid" control={form.control} render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{lang === "en" ? "Paid" : "المبلغ المدفوع"}</FormLabel>
-                                            <FormControl><Input {...field} placeholder={lang === "en" ? "Paid" : "المبلغ المدفوع"} type="number" /></FormControl>
+                                            <FormLabel>{lang === "en" ? "Kommission und Gebühren" : "العمولة والرسوم"}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === "en" ? "Kommission und Gebühren" : "العمولة والرسوم"} type="number" /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} />
+                                    {/* <FormField name="Buchung" control={form.control} render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{lang === "en" ? "Der bei der Buchung einer Unterkunft gezahlte Betrag" : "المبلغ المدفوع عند حجز الإقامة"}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === "en" ? "Kommission und Gebühren" : "العمولة والرسوم"} type="number" /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} /> */}
+                                    <FormField name="Steuerjahr" control={form.control} render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{lang === "en" ? "Steuerjahr, Kleinerunternehmen" : "السنة الضريبية، الأعمال الصغيرة"}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === "en" ? "steuerjahr" : "السنة الضريبية"} type="number" /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
