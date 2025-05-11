@@ -65,8 +65,10 @@ export default function FormPage() {
             {data ? (
                 <div className="container">
                     <div className="n-header">
-                        <Image src={logo} alt="logo" width={100} height={100} className="logo" />
+                        {/* <Image src={logo} alt="logo" width={100} height={100} className="logo" /> */}
+
                         <h2>Rechnung</h2>
+                        <span></span>
                     </div>
 
                     <div className="letter-details">
