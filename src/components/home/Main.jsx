@@ -35,7 +35,7 @@ export default function FormPage() {
         address: z.string().max(500, { message: "Address must be at most 500 characters" }).min(1, { message: "Address is required" }),
         total: z.string().min(1, { message: "Total is required" }),
         paid: z.string().min(1, { message: "Paid is required" }),
-        // Buchung : z.string().min(1, { message: "Buchung is required" }),
+        Buchung : z.string().min(1, { message: "Buchung is required" }),
         Steuerjahr : z.string().min(1, { message: "Steuerjahr is required" }),
     });
 
@@ -50,7 +50,7 @@ export default function FormPage() {
             address: '',
             total: '',
             paid: '',
-            // Buchung: '',
+            Buchung: '',
             Steuerjahr: '',
         }
     });
@@ -90,7 +90,7 @@ export default function FormPage() {
                         <div className="part">
                             <div className="semi-part">
                                 <h3>Buchung Nummer</h3>
-                                <span className="invoice-no">#4211467282</span>
+                                <span className="invoice-no">#{data.Buchung}</span>
                             </div>
                             <div className="semi-part">
                                 <h3>Rechnungsdatum</h3>
@@ -227,6 +227,13 @@ export default function FormPage() {
                                         <FormItem>
                                             <FormLabel>{lang === 'en' ? 'Email' : 'البريد الالكتروني'}</FormLabel>
                                             <FormControl><Input {...field} placeholder={lang === 'en' ? 'Email' : 'البريد الالكتروني'} /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} />
+                                    <FormField name="Buchung" control={form.control} render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{lang === 'en' ? 'Buchung Nummer' : 'رقم الحجز'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Buchung Nummer' : 'رقم الحجز'} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
