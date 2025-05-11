@@ -2939,6 +2939,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  padding: 20px 0;
 }
 .description p span {
   font-size: 12px;
