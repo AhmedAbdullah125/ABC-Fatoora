@@ -11,7 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, } from 
 
 export default function FormPage() {
     const [lang, setLang] = useState('en');
-    const [billNumber, setBillNumber] = useState(100);
+    const [billNumber, setBillNumber] = useState(1);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -19,13 +19,13 @@ export default function FormPage() {
             if (storedLang) {
                 setLang(storedLang);
             }
-            if (localStorage.getItem('billNum')) {
-                setBillNumber(Number(localStorage.getItem('billNum')));
-                localStorage.setItem('billNum', Number(billNumber) + 1);
+            if (localStorage.getItem('billNumb')) {
+                setBillNumber(Number(localStorage.getItem('billNumb')));
+                localStorage.setItem('billNumb', Number(billNumber) + 1);
                 
             }
             else {
-                localStorage.setItem('billNum', 1);
+                localStorage.setItem('billNumb', 1);
             }
         }
     }, []);
