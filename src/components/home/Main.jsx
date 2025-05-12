@@ -19,13 +19,13 @@ export default function FormPage() {
             if (storedLang) {
                 setLang(storedLang);
             }
-            if (localStorage.getItem('billNumber')) {
-                setBillNumber(Number(localStorage.getItem('billNumber')));
-                localStorage.setItem('billNumber', Number(billNumber) + 1);
+            if (localStorage.getItem('billNum')) {
+                setBillNumber(Number(localStorage.getItem('billNum')));
+                localStorage.setItem('billNum', Number(billNumber) + 1);
                 
             }
             else {
-                localStorage.setItem('billNumber', 100);
+                localStorage.setItem('billNum', 1);
             }
         }
     }, []);
@@ -116,11 +116,11 @@ export default function FormPage() {
                             </div>
                             <div className="semi-part">
                                 <h3>Rechnungsnummer</h3>
-                                <span className="invoice-no">#{billNumber}</span>
+                                <span className="invoice-no">{billNumber}</span>
                             </div>
                             <div className="semi-part">
                                 <h3>Buchungsnummer</h3>
-                                <span className="invoice-no">#{data.Buchung}</span>
+                                <span className="invoice-no">{data.Buchung}</span>
                             </div>
                             <div className="semi-part">
                                 <h3>Buchungsseite:</h3>
