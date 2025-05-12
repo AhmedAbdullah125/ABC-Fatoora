@@ -30,11 +30,13 @@ export default function FormPage() {
         address: z.string().max(500, { message: "Address must be at most 500 characters" }).min(1, { message: "Address is required" }),
         total: z.string().min(1, { message: "Total is required" }),
         paid: z.string().min(1, { message: "Paid is required" }),
-        Buchung : z.string().min(1, { message: "Buchung is required" }),
-        Steuerjahr : z.string().min(1, { message: "Steuerjahr is required" }),
+        Buchung: z.string().min(1, { message: "Buchung is required" }),
+        // Steuerjahr : z.string().min(1, { message: "Steuerjahr is required" }),
         title: z.string().min(1, { message: "Title is required" }),
-        title2 : z.string().min(1, { message: "Title is required" }),
-        title3 : z.string().max(200, { message: "Title must be at most 200 characters" }),
+        title2: z.string().min(1, { message: "Title is required" }),
+        title3: z.string().max(200, { message: "Title must be at most 200 characters" }),
+        street: z.string().min(1, { message: "Street is required" }),
+        companytax: z.string().max(200, { message: "Title must be at most 200 characters" }),
     });
 
     const form = useForm({
@@ -49,10 +51,12 @@ export default function FormPage() {
             total: '',
             paid: '',
             Buchung: '',
-            Steuerjahr: '',
+            // Steuerjahr: '',
             title: '',
             title2: '',
             title3: '',
+            street: '',
+            companytax: '',
         }
     });
 
@@ -86,18 +90,24 @@ export default function FormPage() {
                             <h3>Zum</h3>
                             <h4 className="receiver-name">{data.name}</h4>
                             <span className="receiver-company">{data.company}</span>
+                            {data.companytax ? <span className="receiver-company">ust : {data.companytax}</span> : null}
                             <span className="receiver-address">{data.address}</span>
+                            <span className="receiver-address">{data.street}</span>
                             <span className="receiver-phone">{data.phone}</span>
                             <span className="receiver-email">{data.email}</span>
                         </div>
                         <div className="part">
                             <div className="semi-part">
-                                <h3>Buchung Nummer</h3>
-                                <span className="invoice-no">#{data.Buchung}</span>
-                            </div>
-                            <div className="semi-part">
                                 <h3>Rechnungsdatum</h3>
                                 <span className="invoice-date">{new Date().toDateString()}</span>
+                            </div>
+                            <div className="semi-part">
+                                <h3>Rechnungsnummer</h3>
+                                <span className="invoice-no">#{localStorage.getItem("Rechnungsnummer")}</span>
+                            </div>
+                            <div className="semi-part">
+                                <h3>Buchungsnummer</h3>
+                                <span className="invoice-no">#{data.Buchung}</span>
                             </div>
                         </div>
                     </div>
@@ -107,15 +117,15 @@ export default function FormPage() {
 
                             <span>{data.title2}</span>
 
-                            <span>{data.title3}</span>
+                            <span>{data.title3} Person</span>
                         </p>
                     </div>
-                    <div className="due">
+                    {/* <div className="due">
                         <span>Kommissionsfähiger Betrag:</span>
                         <div className="due-amount">
                             <p>{Number(data.total).toFixed(2)} Euro</p>
                         </div>
-                    </div>
+                    </div> */}
                     {/* 
                 <div className="table-container">
                     <table className="table table-bordered table-hover">
@@ -151,28 +161,29 @@ export default function FormPage() {
                 </div> */}
 
                     <div className="total">
+                        <h3>Preisdetails</h3>
                         <div className="total-cont">
                             <div className="band">
-                                <span>Kommissionsfähiger Betrag</span>
-                                <span>{Number(data.total).toFixed(2)} Euro</span>
-                            </div>
-                            <div className="band">
-                                <span>Der bei der Buchung einer Unterkunft gezahlte Betrag</span>
-                                <span>{Number(data.paid).toFixed(2)} Euro</span>
-                            </div>
-                            <div className="band last-band">
-                                <span>Steuerjahr, Kleinerunternehmen</span>
-                                <span>{Number(data.Steuerjahr).toFixed(2)} Euro</span>
-                            </div>
-                            {/* <div className="band ">
-                                <span>Discount</span>
-                                <span className="discount">-2.000 Euro</span>
-                            </div> */}
-                            <div className="band">
-                                <span>Der bei der Buchung einer Unterkunft gezahlte Betrag</span>
+                                <span>Betrag an Gastgeber</span>
                                 <span>{(Number(data.total) - Number(data.paid)).toFixed(2)} Euro</span>
 
                             </div>
+                            <div className="band last-band">
+                                <span>Kommission an Booking</span>
+                                <span>{Number(data.paid).toFixed(2)} Euro</span>
+                            </div>
+                            {/* <div className="band ">
+                                <span>Steuerjahr, Kleinerunternehmen</span>
+                                <span>{Number(data.Steuerjahr).toFixed(2)} Euro</span>
+                                </div> */}
+                            {/* <div className="band ">
+                                <span>Discount</span>
+                                <span className="discount">-2.000 Euro</span>
+                                </div> */}
+                                <div className="band">
+                                    <span>Gesamt Betrag</span>
+                                    <span>{Number(data.total).toFixed(2)} Euro</span>
+                                </div>
                             <Button className="btn-print text-xl py-4 rounded-xl min-w-32 h-13 submit "
                                 onClick={() => window.print()}
                             >{lang === 'en' ? 'Print / Download' : 'طباعة/ تحميل'}</Button>
@@ -183,8 +194,11 @@ export default function FormPage() {
                     </div>
 
                     <div className="f-footer">
+                        <div className="low container">
+                            <span>Steuerfrei, kleinunternehmen §19 ustg</span>
+                        </div>
                         <div className="container">
-                            <span>#656764-32 . {Number(data.total).toFixed(2)}Euro due {new Date().toDateString()}</span>
+                            <span>#{data.Buchung} . {Number(data.total).toFixed(2)}Euro due {new Date().toDateString()} Steuerfrei, kleinunternehmen §19 ustg</span>
                         </div>
                     </div>
                 </div>
@@ -209,11 +223,25 @@ export default function FormPage() {
                                             <FormMessage />
                                         </FormItem>
                                     )} />
+                                    <FormField name="companytax" control={form.control} render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{lang === 'en' ? 'Steuernummer der Firma' : 'رقم الشركه الضريبي'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Steuernummer der Firma' : 'اسم الشركة'} /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} />
 
                                     <FormField name="address" control={form.control} render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>{lang === 'en' ? 'Adresse' : 'العنوان'}</FormLabel>
                                             <FormControl><Input {...field} placeholder={lang === 'en' ? 'Adresse' : 'العنوان'} /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} />
+                                    <FormField name="street" control={form.control} render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{lang === 'en' ? 'Straßennahme' : 'الشارع'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Straßennahme' : 'الشارع'} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
@@ -242,22 +270,22 @@ export default function FormPage() {
                                     )} />
                                     <FormField name="title" control={form.control} render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{lang === 'en' ? 'Primäre Rechnungsadresse' : 'العنوان الرئيسي'}</FormLabel>
-                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Primäre Rechnungsadresse' : 'العنوان الرئيسي'} /></FormControl>
+                                            <FormLabel>{lang === 'en' ? 'Apartmentnahm' : 'العنوان الرئيسي'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Apartmentnahm' : 'العنوان الرئيسي'} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
                                     <FormField name="title2" control={form.control} render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{lang === 'en' ? 'Sekundäre Rechnungsadresse' : 'العنوان الثانوي'}</FormLabel>
-                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Sekundäre Rechnungsadresse' : 'العنوان الثانوي'} /></FormControl>
+                                            <FormLabel>{lang === 'en' ? 'Buchungstermine' : 'مواعيد الحجز'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Buchungstermine' : 'مواعيد الحجز'} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
                                     <FormField name="title3" control={form.control} render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>{lang === 'en' ? 'Unterrechnungsadresse' : 'العنوان الفرعي'}</FormLabel>
-                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Unterrechnungsadresse' : 'العنوان الفرعي'} /></FormControl>
+                                            <FormLabel>{lang === 'en' ? 'Buchungspersonen' : 'عدد الافراد'}</FormLabel>
+                                            <FormControl><Input type="number" {...field} placeholder={lang === 'en' ? 'Buchungspersonen' : 'عدد الافراد'} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
@@ -285,13 +313,13 @@ export default function FormPage() {
                                             <FormMessage />
                                         </FormItem>
                                     )} /> */}
-                                    <FormField name="Steuerjahr" control={form.control} render={({ field }) => (
+                                    {/* <FormField name="Steuerjahr" control={form.control} render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>{lang === "en" ? "Steuerjahr, Kleinerunternehmen" : "السنة الضريبية، الأعمال الصغيرة"}</FormLabel>
                                             <FormControl><Input {...field} placeholder={lang === "en" ? "steuerjahr" : "السنة الضريبية"} type="number" /></FormControl>
                                             <FormMessage />
                                         </FormItem>
-                                    )} />
+                                    )} /> */}
 
                                     <Button type="submit" className={`text-xl py-4 rounded-xl min-w-32 h-13 submit mt-8`}>{lang === "en" ? "Submit" : "ارسال"}</Button>
                                 </form>
