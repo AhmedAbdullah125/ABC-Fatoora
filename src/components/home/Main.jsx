@@ -11,12 +11,21 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, } from 
 
 export default function FormPage() {
     const [lang, setLang] = useState('en');
+    const [billNumber, setBillNumber] = useState(100);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const storedLang = localStorage.getItem('lang');
             if (storedLang) {
                 setLang(storedLang);
+            }
+            if (localStorage.getItem('billNumber')) {
+                setBillNumber(Number(localStorage.getItem('billNumber')));
+                localStorage.setItem('billNumber', Number(billNumber) + 1);
+                
+            }
+            else {
+                localStorage.setItem('billNumber', 100);
             }
         }
     }, []);
@@ -37,6 +46,7 @@ export default function FormPage() {
         title3: z.string().max(200, { message: "Title must be at most 200 characters" }),
         street: z.string().min(1, { message: "Street is required" }),
         companytax: z.string().max(200, { message: "Title must be at most 200 characters" }),
+        site : z.string().max(200, { message: "Title must be at most 200 characters" }).min(1, { message: "Street is required" }),
     });
 
     const form = useForm({
@@ -45,7 +55,7 @@ export default function FormPage() {
             name: '',
             phone: '',
             email: '',
-            // comments: '',
+            site: '',
             company: '',
             address: '',
             total: '',
@@ -102,15 +112,19 @@ export default function FormPage() {
                         <div className="part">
                             <div className="semi-part">
                                 <h3>Rechnungsdatum</h3>
-                                <span className="invoice-date">{new Date().toDateString()}</span>
+                                <span className="invoice-date">{formattedDate}</span>
                             </div>
                             <div className="semi-part">
                                 <h3>Rechnungsnummer</h3>
-                                <span className="invoice-no">#{localStorage.getItem("Rechnungsnummer")}</span>
+                                <span className="invoice-no">#{billNumber}</span>
                             </div>
                             <div className="semi-part">
                                 <h3>Buchungsnummer</h3>
                                 <span className="invoice-no">#{data.Buchung}</span>
+                            </div>
+                            <div className="semi-part">
+                                <h3>Buchungsseite:</h3>
+                                <span className="invoice-no">{data.site}</span>
                             </div>
                         </div>
                     </div>
@@ -202,12 +216,12 @@ export default function FormPage() {
                         </div>
                     </div>
 
-                    <div className="f-footer">
+                    {/* <div className="f-footer">
                       
                         <div className="container nnew">
                             <span>#{data.Buchung} . {Number(data.total).toFixed(2)} Euro due {formattedDate}</span>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             ) : (
                 <div className="form-container">
@@ -298,6 +312,13 @@ export default function FormPage() {
                                     )} />
 
 
+                                    <FormField name="site" control={form.control} render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel> {lang === "en" ? " Buchungsseite:" : "موقع الحجز: "}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === "en" ? "Buchungsseite:" : "موقع الحجز:"} type="text" /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} />
                                     <FormField name="total" control={form.control} render={({ field }) => (
                                         <FormItem>
                                             <FormLabel> {lang === "en" ? "Kommissionsfähiger Betrag:" : "مبلغ العمولة: "}</FormLabel>
