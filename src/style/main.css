@@ -3063,6 +3063,9 @@ body {
   color: #1A1C21;
   margin-bottom: 4px;
   font-family: "Inter", sans-serif;
+  color: var(--main-color);
+  background-color: #ECE6F3;
+  padding: 4px;
 }
 .total .total-cont {
   min-width: 50%;
@@ -3085,6 +3088,14 @@ body {
 .total .total-cont .band .discount {
   color: #C1092F;
 }
+.total .total-cont .low-word {
+  margin-top: 30px;
+}
+.total .total-cont .low-word span {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A1C21;
+}
 .total .total-cont .last-band {
   padding-bottom: 12px;
   border-bottom: 1px solid #D7DAE0;
@@ -3095,14 +3106,16 @@ body {
 }
 
 .f-footer {
-  padding: 14px 0;
-  border-top: 1px solid #D7DAE0;
   position: absolute;
   bottom: 0;
   right: 0;
   width: 100%;
 }
+.f-footer .nnew {
+  border-top: 1px solid #D7DAE0;
+}
 .f-footer .container {
+  padding: 14px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;

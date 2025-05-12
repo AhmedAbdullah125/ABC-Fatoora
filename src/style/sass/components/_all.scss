@@ -166,6 +166,9 @@
         color: #1A1C21;
         margin-bottom: 4px;
         font-family: 'Inter', sans-serif;
+        color: $main;
+        background-color: #ECE6F3;
+        padding: 4px;
     }
     .total-cont {
         min-width: 50%;
@@ -189,7 +192,14 @@
                 color: #C1092F;
             }
         }
-
+        .low-word{
+            margin-top: 30px;
+            span{
+                font-size: 16px;
+                font-weight: 700;
+                color: #1A1C21;
+            }
+        }
         .last-band {
             padding-bottom: 12px;
             border-bottom: 1px solid #D7DAE0;
@@ -205,14 +215,17 @@ body {
 
 .f-footer {
 
-    padding: 14px 0;
-    border-top: 1px solid #D7DAE0;
+    
     position: absolute;
     bottom: 0;
     right: 0;
     width: 100%;
+    .nnew{
 
+        border-top: 1px solid #D7DAE0;
+    }
     .container {
+        padding: 14px 0;
         display: flex;
         align-items: center;
         justify-content: space-between;

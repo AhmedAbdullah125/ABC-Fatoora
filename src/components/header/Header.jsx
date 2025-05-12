@@ -1,7 +1,5 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import logo from '/public/ABC.webp';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Globe, Menu, X } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';

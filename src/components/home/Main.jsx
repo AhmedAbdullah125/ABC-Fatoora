@@ -65,6 +65,9 @@ export default function FormPage() {
         setData(data);
     };
 
+    const formattedDate = new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
+    console.log(formattedDate);
+
     return (
         <div className="book-main-page">
             {data ? (
@@ -172,6 +175,7 @@ export default function FormPage() {
                                 <span>Kommission an Booking</span>
                                 <span>{Number(data.paid).toFixed(2)} Euro</span>
                             </div>
+
                             {/* <div className="band ">
                                 <span>Steuerjahr, Kleinerunternehmen</span>
                                 <span>{Number(data.Steuerjahr).toFixed(2)} Euro</span>
@@ -180,10 +184,15 @@ export default function FormPage() {
                                 <span>Discount</span>
                                 <span className="discount">-2.000 Euro</span>
                                 </div> */}
-                                <div className="band">
-                                    <span>Gesamt Betrag</span>
-                                    <span>{Number(data.total).toFixed(2)} Euro</span>
-                                </div>
+                            <div className="band">
+                                <span>Gesamt Betrag</span>
+                                <span>{Number(data.total).toFixed(2)} Euro</span>
+                            </div>
+                            <div className="band low-word">
+                                <span>Steuerfrei, kleinunternehmen §19 ustg</span>
+                                
+                            </div>
+
                             <Button className="btn-print text-xl py-4 rounded-xl min-w-32 h-13 submit "
                                 onClick={() => window.print()}
                             >{lang === 'en' ? 'Print / Download' : 'طباعة/ تحميل'}</Button>
@@ -194,11 +203,9 @@ export default function FormPage() {
                     </div>
 
                     <div className="f-footer">
-                        <div className="low container">
-                            <span>Steuerfrei, kleinunternehmen §19 ustg</span>
-                        </div>
-                        <div className="container">
-                            <span>#{data.Buchung} . {Number(data.total).toFixed(2)}Euro due {new Date().toDateString()} Steuerfrei, kleinunternehmen §19 ustg</span>
+                      
+                        <div className="container nnew">
+                            <span>#{data.Buchung} . {Number(data.total).toFixed(2)} Euro due {formattedDate}</span>
                         </div>
                     </div>
                 </div>
