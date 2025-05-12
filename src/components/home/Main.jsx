@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Input } from '../ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { number, z } from 'zod';
 import validator from "validator";
 import { Button } from '@/components/ui/button';
 import PhoneInput from 'react-phone-number-input';
@@ -35,23 +35,24 @@ export default function FormPage() {
         company: z.string().min(1, { message: "Company name is required" }).max(100, { message: "Name must be at most 50 characters" }),
         phone: z.string().refine(validator.isMobilePhone, { message: "Invalid phone number" }),
         email: z.string().email({ message: "Invalid email address" }),
-        // comments: z.string().max(500, { message: "Comments must be at most 500 characters" }),
         address: z.string().max(500, { message: "Address must be at most 500 characters" }).min(1, { message: "Address is required" }),
         total: z.string().min(1, { message: "Total is required" }),
         paid: z.string().min(1, { message: "Paid is required" }),
         Buchung: z.string().min(1, { message: "Buchung is required" }),
-        // Steuerjahr : z.string().min(1, { message: "Steuerjahr is required" }),
         title: z.string().min(1, { message: "Title is required" }),
         title2: z.string().min(1, { message: "Title is required" }),
         title3: z.string().max(200, { message: "Title must be at most 200 characters" }),
         street: z.string().min(1, { message: "Street is required" }),
         companytax: z.string().max(200, { message: "Title must be at most 200 characters" }),
-        site : z.string().max(200, { message: "Title must be at most 200 characters" }).min(1, { message: "Street is required" }),
+        site : z.string().max(200, { message: "Site must be at most 200 characters" }).min(1, { message: "Street is required" }),
+        BillNum :z.string().max(200, { message: "Bill Number must be at most 200 characters" }).min(1, { message: "Street is required" }),
+        
     });
 
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            BillNum:"",
             name: '',
             phone: '',
             email: '',
@@ -61,7 +62,6 @@ export default function FormPage() {
             total: '',
             paid: '',
             Buchung: '',
-            // Steuerjahr: '',
             title: '',
             title2: '',
             title3: '',
@@ -71,7 +71,6 @@ export default function FormPage() {
     });
 
     const Submit = (data) => {
-        console.log(data);
         setData(data);
     };
 
@@ -116,7 +115,7 @@ export default function FormPage() {
                             </div>
                             <div className="semi-part">
                                 <h3>Rechnungsnummer</h3>
-                                <span className="invoice-no">{billNumber}</span>
+                                <span className="invoice-no">{data.BillNum}</span>
                             </div>
                             <div className="semi-part">
                                 <h3>Buchungsnummer</h3>
@@ -230,6 +229,13 @@ export default function FormPage() {
 
                             <Form {...form}>
                                 <form onSubmit={form.handleSubmit(Submit)}>
+                                    <FormField name="BillNum" control={form.control} render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{lang === 'en' ? 'Rechnungsnummer' : 'رقم الفاتورة'}</FormLabel>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Rechnungsnummer' : 'رقم الفاتورة'} /></FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} />
                                     <FormField name="name" control={form.control} render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>{lang === 'en' ? 'Vollständiger Name' : 'الاسم الكامل'}</FormLabel>
@@ -247,7 +253,7 @@ export default function FormPage() {
                                     <FormField name="companytax" control={form.control} render={({ field }) => (
                                         <FormItem>
                                             <FormLabel>{lang === 'en' ? 'Steuernummer der Firma' : 'رقم الشركه الضريبي'}</FormLabel>
-                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Steuernummer der Firma' : 'اسم الشركة'} /></FormControl>
+                                            <FormControl><Input {...field} placeholder={lang === 'en' ? 'Steuernummer der Firma' : 'رقم الشركه الضريبي'} /></FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )} />
