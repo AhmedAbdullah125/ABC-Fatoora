@@ -168,7 +168,7 @@ export default function FormPage() {
                                 <span>{(Number(data.total) - Number(data.paid)).toFixed(2)} Euro</span>
 
                             </div>
-                            <div className="band last-band">
+                            <div className="band ">
                                 <span>Kommission an Booking</span>
                                 <span>{Number(data.paid).toFixed(2)} Euro</span>
                             </div>

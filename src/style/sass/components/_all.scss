@@ -20,6 +20,7 @@
     }
 }
 .description{
+    border-bottom: 1px solid #D7DAE0;
     p{
         display: flex;
         flex-direction: column;
@@ -157,7 +158,15 @@
     margin-top: 12px;
     display: flex;
     justify-content: flex-end;
-
+    flex-direction: column;
+    gap: 12px;
+    h3{
+        font-size: 18px;
+        font-weight: 600;
+        color: #1A1C21;
+        margin-bottom: 4px;
+        font-family: 'Inter', sans-serif;
+    }
     .total-cont {
         min-width: 50%;
         width: fit-content;
