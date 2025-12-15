@@ -22,7 +22,7 @@ export default function FormPage() {
             if (localStorage.getItem('billNumb')) {
                 setBillNumber(Number(localStorage.getItem('billNumb')));
                 localStorage.setItem('billNumb', Number(billNumber) + 1);
-                
+
             }
             else {
                 localStorage.setItem('billNumb', 1);
@@ -30,10 +30,20 @@ export default function FormPage() {
         }
     }, []);
     const [data, setData] = useState(null);
+    const isGermanPhone = (value) => {
+        if (!value) return true; // allow optional
+        const cleaned = String(value).replace(/[\s-]/g, '');
+        if (!cleaned.startsWith('+49')) return false;
+        // Accept +49 followed by 7 to 13 digits (covers landline and mobile ranges)
+        return /^\+49\d{7,13}$/.test(cleaned);
+    };
     const formSchema = z.object({
         name: z.string().min(1, { message: "Name is required" }).max(50, { message: "Name must be at most 50 characters" }),
         company: z.string().min(1, { message: "Company name is required" }).max(100, { message: "Name must be at most 50 characters" }),
-        phone: z.string().refine(validator.isMobilePhone, { message: "Invalid phone number" }),
+        phone: z.preprocess(
+            (v) => (v === '' || v == null ? undefined : v),
+            z.string().refine(isGermanPhone, { message: "Invalid German phone number (use +49 ...)" })
+        ).optional(),
         email: z.string().email({ message: "Invalid email address" }),
         address: z.string().max(500, { message: "Address must be at most 500 characters" }).min(1, { message: "Address is required" }),
         total: z.string().min(1, { message: "Total is required" }),
@@ -44,15 +54,15 @@ export default function FormPage() {
         title3: z.string().max(200, { message: "Title must be at most 200 characters" }),
         street: z.string().min(1, { message: "Street is required" }),
         companytax: z.string().max(200, { message: "Title must be at most 200 characters" }),
-        site : z.string().max(200, { message: "Site must be at most 200 characters" }).min(1, { message: "Street is required" }),
-        BillNum :z.string().max(200, { message: "Bill Number must be at most 200 characters" }).min(1, { message: "Street is required" }),
-        
+        site: z.string().max(200, { message: "Site must be at most 200 characters" }).min(1, { message: "Street is required" }),
+        BillNum: z.string().max(200, { message: "Bill Number must be at most 200 characters" }).min(1, { message: "Street is required" }),
+
     });
 
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            BillNum:"",
+            BillNum: "",
             name: '',
             phone: '',
             email: '',
@@ -203,7 +213,7 @@ export default function FormPage() {
                             </div>
                             <div className="band low-word">
                                 <span>Steuerfrei, kleinunternehmen §19 ustg</span>
-                                
+
                             </div>
 
                             <Button className="btn-print text-xl py-4 rounded-xl min-w-32 h-13 submit "
