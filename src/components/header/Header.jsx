@@ -2,11 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Globe, Menu, X } from 'lucide-react';
-import { usePathname, useRouter } from 'next/navigation';
 
 export default function Header() {
-  const router = useRouter()
-  const pathname = usePathname()
 
   let [lang, setLang] = useState('en');
   useEffect(() => {
