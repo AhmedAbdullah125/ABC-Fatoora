@@ -87,10 +87,60 @@ export default function FormPage() {
     const formattedDate = new Date().toLocaleDateString('en-GB').replace(/\//g, '.');
     console.log(formattedDate);
 
+    const getPdfOptions = () => ({
+        margin:       0.5,
+        filename:     `Rechnung_${data?.BillNum || 'Invoice'}.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    });
+
+    const handleDownloadPdf = async () => {
+        try {
+            const html2pdf = (await import('html2pdf.js')).default;
+            const element = document.getElementById('invoice-content');
+            const buttons = document.querySelectorAll('.btn-print');
+            buttons.forEach(btn => btn.style.display = 'none');
+            
+            await html2pdf().set(getPdfOptions()).from(element).save();
+            
+            buttons.forEach(btn => btn.style.display = '');
+        } catch (error) {
+            console.error('Error generating PDF', error);
+        }
+    };
+
+    const handleSharePdf = async () => {
+        try {
+            const html2pdf = (await import('html2pdf.js')).default;
+            const element = document.getElementById('invoice-content');
+            const buttons = document.querySelectorAll('.btn-print');
+            buttons.forEach(btn => btn.style.display = 'none');
+            
+            const pdfOutput = await html2pdf().set(getPdfOptions()).from(element).output('blob');
+            buttons.forEach(btn => btn.style.display = '');
+
+            if (navigator.canShare && navigator.canShare({ files: [new File([pdfOutput], getPdfOptions().filename, { type: 'application/pdf' })] })) {
+                const file = new File([pdfOutput], getPdfOptions().filename, { type: 'application/pdf' });
+                await navigator.share({
+                    files: [file],
+                    title: 'Rechnung',
+                    text: 'Hier ist Ihre Rechnung'
+                });
+            } else {
+                alert(lang === 'en' ? 'Sharing not supported on this device/browser' : 'المشاركة غير مدعومة في هذا المتصفح');
+            }
+        } catch (error) {
+            console.error('Error sharing PDF', error);
+            const buttons = document.querySelectorAll('.btn-print');
+            buttons.forEach(btn => btn.style.display = '');
+        }
+    };
+
     return (
         <div className="book-main-page">
             {data ? (
-                <div className="container">
+                <div className="container" id="invoice-content">
                     <div className="n-header">
                         {/* <Image src={logo} alt="logo" width={100} height={100} className="logo" /> */}
 
@@ -235,12 +285,23 @@ export default function FormPage() {
                                 </div>
                             </div>
 
-                            <Button className="btn-print text-xl py-4 rounded-xl min-w-32 h-13 submit "
-                                onClick={() => window.print()}
-                            >{lang === 'en' ? 'Print / Download' : 'طباعة/ تحميل'}</Button>
-                            <Button className="btn-print text-xl py-4 rounded-xl min-w-32 h-13 submit bg-[#ECE6F3] text-[#C1092F] "
-                                onClick={() => { setData(null); }}
-                            >{lang === 'en' ? 'Reset' : 'إعادة'}</Button>
+                            <div className="flex flex-wrap gap-4 mt-8">
+                                <Button className="btn-print text-xl py-4 rounded-xl min-w-32 h-13 submit"
+                                    onClick={() => window.print()}
+                                >{lang === 'en' ? 'Print' : 'طباعة'}</Button>
+                                
+                                <Button type="button" className="btn-print text-xl py-4 rounded-xl min-w-32 h-13 submit"
+                                    onClick={handleDownloadPdf}
+                                >{lang === 'en' ? 'Download PDF' : 'تحميل PDF'}</Button>
+
+                                <Button type="button" className="btn-print text-xl py-4 rounded-xl min-w-32 h-13 submit"
+                                    onClick={handleSharePdf}
+                                >{lang === 'en' ? 'Share' : 'مشاركة'}</Button>
+
+                                <Button className="btn-print text-xl py-4 rounded-xl min-w-32 h-13 submit bg-[#ECE6F3] text-[#C1092F]"
+                                    onClick={() => { setData(null); }}
+                                >{lang === 'en' ? 'Reset' : 'إعادة'}</Button>
+                            </div>
                         </div>
                     </div>
 
