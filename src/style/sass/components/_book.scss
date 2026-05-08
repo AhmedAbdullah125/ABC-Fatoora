@@ -2,6 +2,10 @@ body {
     position: relative;
 }
 
+.PhoneInputInput {
+    height: 40px !important;
+}
+
 .popup {
     // position: absolute;
     // top: 0%;
@@ -158,8 +162,8 @@ body {
                 margin-top: 12px;
                 margin-bottom: 16px;
                 box-shadow: none;
-                padding: 15px 24px;
-                height: 55px;
+                padding: 10px 24px;
+                height: 40px;
                 width: 100%;
                 border: 1px solid $main;
                 background-color: #F9F9F9;
@@ -181,7 +185,7 @@ body {
                 margin-top: 12px;
                 margin-bottom: 16px;
                 background-color: #F9F9F9;
-                height: 55px;
+                height: 40px;
 
             }
 
@@ -277,7 +281,7 @@ body {
 
     .PhoneInputCountry {
         display: flex;
-        height: 55px;
+        height: 40px;
         width: 105px;
         border-radius: 8px;
         border: 1px solid $main;
@@ -301,7 +305,7 @@ body {
 
     .PhoneInputCountryIcon {
         max-height: 100%;
-        height: 55px;
+        height: 40px;
         padding: 3px;
         max-width: 50px;
         display: none;
@@ -329,6 +333,7 @@ body {
         flex-direction: row;
     }
 }
+
 .book-main-page .book-cont .form form .PhoneInputCountry {
     width: 106px;
     flex-shrink: 0;

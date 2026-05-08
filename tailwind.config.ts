@@ -72,7 +72,6 @@ const config: Config = {
   			custom: '30px 0px 0px 0 rgba(250, 132, 67, 1)',
   			travel: '-25px -43px 0px 0 rgba(255, 243, 237, 1)',
   			contact: '-25px -36px 0px 0 rgba(255, 243, 237, 1)',
-  			sm: '0px 0px 30px 0 rgba(250, 132, 67, 1)',
   			reserv: '0px 0px 30px 0 rgba(0, 0, 0, .1)'
   		},
   		borderRadius: {
