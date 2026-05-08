@@ -215,6 +215,25 @@ export default function FormPage() {
                                 <span>Steuerfrei, kleinunternehmen §19 ustg</span>
 
                             </div>
+                            <div className="bank-details">
+                                <h3>Bankdaten:</h3>
+                                <div className="band">
+                                    <span>Empfänger:</span>
+                                    <span>Ahmed Elsayed</span>
+                                </div>
+                                <div className="band">
+                                    <span>IBAN:</span>
+                                    <span>DE21 1001 0178 0931 0448 90</span>
+                                </div>
+                                <div className="band">
+                                    <span>BIC:</span>
+                                    <span>REVODEB2</span>
+                                </div>
+                                <div className="band">
+                                    <span>Nahme der Bank:</span>
+                                    <span>Revolut UAB</span>
+                                </div>
+                            </div>
 
                             <Button className="btn-print text-xl py-4 rounded-xl min-w-32 h-13 submit "
                                 onClick={() => window.print()}

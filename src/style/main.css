@@ -1926,7 +1926,6 @@ footer .served {
   align-items: center;
   justify-content: center;
   /* From Uiverse.io by SteveBloX */
-  /* From Uiverse.io by Lakshay-art */
 }
 .loading-cont .wrapper {
   display: flex;
@@ -1961,6 +1960,9 @@ footer .served {
   50% {
     transform: translateY(25px);
   }
+}
+.loading-cont {
+  /* From Uiverse.io by Lakshay-art */
 }
 .loading-cont .section-banner {
   height: 250px;

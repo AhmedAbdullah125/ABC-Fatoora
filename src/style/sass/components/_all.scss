@@ -200,6 +200,23 @@
                 color: #1A1C21;
             }
         }
+        
+        .bank-details {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            h3 {
+                font-size: 14px;
+                background-color: transparent;
+                padding: 0;
+                margin-bottom: 0px;
+                color: #1A1C21;
+            }
+        }
+
         .last-band {
             padding-bottom: 12px;
             border-bottom: 1px solid #D7DAE0;
